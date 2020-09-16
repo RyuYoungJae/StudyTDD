@@ -33,12 +33,17 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <ItemGroup>
+    <ClInclude Include="ChangeRule.h" />
     <ClInclude Include="Drink.h" />
+    <ClInclude Include="Change.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="VendingMachine.h" />
+    <ClInclude Include="VendingMachineTests.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ChangeRule.cpp" />
     <ClCompile Include="Drink.cpp" />
+    <ClCompile Include="Change.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

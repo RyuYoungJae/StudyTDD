@@ -1,13 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="test.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="VendingMachine.cpp">
       <Filter>VendingMachine</Filter>
     </ClCompile>
     <ClCompile Include="Drink.cpp">
       <Filter>Drink</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangeRule.cpp">
+      <Filter>Change</Filter>
+    </ClCompile>
+    <ClCompile Include="Change.cpp">
+      <Filter>Change</Filter>
+    </ClCompile>
+    <ClCompile Include="test.cpp">
+      <Filter>UnitTest</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -18,6 +26,15 @@
     <ClInclude Include="Drink.h">
       <Filter>Drink</Filter>
     </ClInclude>
+    <ClInclude Include="ChangeRule.h">
+      <Filter>Change</Filter>
+    </ClInclude>
+    <ClInclude Include="Change.h">
+      <Filter>Change</Filter>
+    </ClInclude>
+    <ClInclude Include="VendingMachineTests.h">
+      <Filter>UnitTest</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="VendingMachine">
@@ -26,5 +43,14 @@
     <Filter Include="Drink">
       <UniqueIdentifier>{58da1964-3ff2-4535-9ad0-e290471bad91}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Change">
+      <UniqueIdentifier>{76d5e794-2a4a-477f-8d61-b01f26e10afb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UnitTest">
+      <UniqueIdentifier>{628f3f63-3453-4125-b380-22da79907449}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

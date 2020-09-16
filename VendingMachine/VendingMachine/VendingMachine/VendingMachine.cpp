@@ -1,14 +1,21 @@
 #include "pch.h"
 #include "VendingMachine.h"
+#include "Change.h"
 #include "Drink.h"
+#include "ChangeRule.h"
 
-VendingMachine::VendingMachine() : m_drinks{}, m_money{0}
+VendingMachine::VendingMachine() : m_drinks{}, m_money{ 0 }, m_changeRule{nullptr}
 {
 }
 
 
 VendingMachine::~VendingMachine()
 {
+}
+
+void VendingMachine::RegisterChangeRule(std::unique_ptr<ChangeRule> rule)
+{
+	m_changeRule = std::move(rule);
 }
 
 void VendingMachine::RegisterDrink(std::shared_ptr<Drink> drink)
@@ -48,11 +55,13 @@ int VendingMachine::GetSavingMoney()
 	return m_money;
 }
 
-int VendingMachine::ReturnMoney()
+std::shared_ptr<Change> VendingMachine::ReturnMoney()
 {
-	auto result = m_money;
-	m_money = 0;
+	assert(m_changeRule != nullptr);
 
+	auto result = m_changeRule->CalculateByPolicy(m_money);
+	m_money = 0;
+	
 	return result;
 }
 
