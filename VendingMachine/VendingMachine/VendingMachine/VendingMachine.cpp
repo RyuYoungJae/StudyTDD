@@ -47,7 +47,7 @@ int VendingMachine::GetRemainCount(const std::string& name)
 
 void VendingMachine::PutMoney(int amount)
 {
-	m_money = amount;
+	m_money += amount;
 }
 
 int VendingMachine::GetSavingMoney()
