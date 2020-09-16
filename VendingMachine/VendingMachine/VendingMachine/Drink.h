@@ -19,6 +19,8 @@ public:
 	std::string GetName();
 	std::shared_ptr<Drink> GetDrink();
 	int GetCount();
+	int GetAmount();
+	bool EnableBuy(int money);
 
 	std::string ToString();
 };

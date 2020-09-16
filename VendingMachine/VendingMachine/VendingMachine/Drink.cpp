@@ -23,4 +23,5 @@ int Drink::GetCount()
 std::string Drink::ToString()
 {
 	return m_name + ":" + std::to_string(m_amount) + ":" + std::to_string(m_count);
+	return m_name + ":" + std::to_string(GetAmount()) + ":" + std::to_string(GetCount());
 }

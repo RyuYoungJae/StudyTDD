@@ -2,7 +2,7 @@
 #include "VendingMachine.h"
 #include "Drink.h"
 
-VendingMachine::VendingMachine()
+VendingMachine::VendingMachine() : m_drinks{}, m_money{0}
 {
 }
 
@@ -22,6 +22,10 @@ std::shared_ptr<Drink> VendingMachine::Push(const std::string& name)
 	if (it == m_drinks.end()) return nullptr;
 
 	auto& drink = it->second;
+	if (!drink->EnableBuy(GetSavingMoney())) return nullptr;
+
+	m_money -= drink->GetAmount();
+
 	return drink->GetDrink();
 }
 
@@ -32,6 +36,24 @@ int VendingMachine::GetRemainCount(const std::string& name)
 
 	auto& drink = it->second;
 	return drink->GetCount();
+}
+
+void VendingMachine::PutMoney(int amount)
+{
+	m_money = amount;
+}
+
+int VendingMachine::GetSavingMoney()
+{
+	return m_money;
+}
+
+int VendingMachine::ReturnMoney()
+{
+	auto result = m_money;
+	m_money = 0;
+
+	return result;
 }
 
 std::string VendingMachine::ToString()
