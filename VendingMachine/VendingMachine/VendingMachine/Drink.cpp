@@ -20,8 +20,17 @@ int Drink::GetCount()
 	return m_count;
 }
 
+int Drink::GetAmount()
+{
+	return m_amount;
+}
+
+bool Drink::EnableBuy(int money)
+{
+	return money >= GetAmount();
+}
+
 std::string Drink::ToString()
 {
-	return m_name + ":" + std::to_string(m_amount) + ":" + std::to_string(m_count);
 	return m_name + ":" + std::to_string(GetAmount()) + ":" + std::to_string(GetCount());
 }
