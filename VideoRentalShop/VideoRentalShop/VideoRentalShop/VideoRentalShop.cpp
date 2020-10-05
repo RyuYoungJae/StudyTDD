@@ -7,11 +7,7 @@
 
 int main()
 {
-	auto video = std::make_shared<Video>();
     std::cout << "Hello World!\n"; 
-
-	video->Tag("BlackMoney", 1000, 100);
-	std::cout << video->ToString() << std::endl;
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴

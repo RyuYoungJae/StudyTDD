@@ -1,17 +1,18 @@
 #pragma once
 #include <string>
+#include "VideoType.h"
 
 class Video
 {
 private:
 	std::string m_title;
 	int m_cost;
-	int m_point;
+	VideoType m_type;
 
 public:
 	Video();
 
-	void Tag(std::string&& title, int cost, int point);
+	void Tag(std::string&& title, int cost, VideoType type);
 	
 	std::string GetTitle();
 	std::string ToString();

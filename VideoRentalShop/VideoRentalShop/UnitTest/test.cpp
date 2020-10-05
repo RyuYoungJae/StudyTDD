@@ -1,23 +1,28 @@
 #include "pch.h"
-#include "Video.cpp"
-#include "RentalSystem.cpp"
+#include "RentalSystemTests.h"
+#include "VideoType.h"
+#include "PointRule.cpp"
 
 TEST(VideoTests, Tag_Create_Equal)
 {
 	auto video = std::make_shared<Video>();
-	video->Tag("블랙머니", 1000, 100);
+	video->Tag("블랙머니", 1000, VideoType::MOVIE);
 
-	EXPECT_EQ(video->ToString(), "블랙머니:1000:100");
+	EXPECT_EQ(video->ToString(), "블랙머니:1000:1");
 }
 
-TEST(RentalSystemTests, Register_afterFind_NotNull)
+TEST(PointRuleTests, Register_MOVIE3Point_Get3point)
 {
-	auto video = std::make_shared<Video>();
-	video->Tag("블랙머니", 1000, 100);
+	auto rule = std::make_shared<PointRule>();
+	rule->Register(VideoType::MOVIE, 1);
 
-	auto system = std::make_shared<RentalSystem>();
-	system->Register(video);
+	EXPECT_EQ(rule->GetPoint(VideoType::MOVIE), 1);
+}
 
-	auto result = system->Find("블랙머니");
+TEST_F(RentalSystemTests, Register_afterFind_NotNull)
+{
+	RegisterVideos();
+
+	auto result = m_system->Find("블랙머니");
 	EXPECT_TRUE(result != nullptr);
 }
