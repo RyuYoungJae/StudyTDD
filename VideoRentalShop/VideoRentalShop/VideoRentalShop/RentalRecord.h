@@ -22,4 +22,5 @@ public:
 	int GetCount();
 	int GetCost();
 	int GetBonusPoint();
+	std::string Display();
 };

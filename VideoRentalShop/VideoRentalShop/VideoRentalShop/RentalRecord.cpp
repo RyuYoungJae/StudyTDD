@@ -43,3 +43,28 @@ int RentalRecord::GetBonusPoint()
 
 	return total;
 }
+
+std::string RentalRecord::Display()
+{
+	std::string result = "";
+	result += std::to_string(m_records.size());
+	result += "-";
+	
+	for (const auto& record : m_records)
+	{
+		result += record.Video->ToString();
+		result += ":";
+		result += std::to_string(record.Days);
+		result += ":";
+		result += std::to_string(record.Cost);
+		result += ",";
+	}
+
+	result += "-";
+	result += std::to_string(GetCost());
+	
+	result += "-";
+	result += std::to_string(GetBonusPoint());
+
+	return result;
+}

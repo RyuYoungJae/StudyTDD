@@ -85,7 +85,7 @@ TEST(RentalRecordTests, GetRentalCost_TotalCost_36800Equal)
 	EXPECT_EQ(record->GetCost(), 36800);
 }
 
-TEST(RentalRecordTests, GetBonusPoint_TotalPoint_36800Equal)
+TEST(RentalRecordTests, GetBonusPoint_TotalPoint_4Equal)
 {
 	auto video1 = std::make_shared<Video>();
 	video1->Tag("블랙머니", 1000, VideoType::MOVIE);
@@ -111,6 +111,36 @@ TEST(RentalRecordTests, GetBonusPoint_TotalPoint_36800Equal)
 	record->Add(video3, 10, calc->GetRentalCost(video3, 10), point->GetPoint(video3->GetType()));
 
 	EXPECT_EQ(record->GetBonusPoint(), 4);
+}
+
+TEST(RentalRecordTests, Display_RentalInfo_Equal)
+{
+	auto video1 = std::make_shared<Video>();
+	video1->Tag("블랙머니", 1000, VideoType::MOVIE);
+
+	auto video2 = std::make_shared<Video>();
+	video2->Tag("머니볼", 1500, VideoType::SPORTS);
+
+	auto video3 = std::make_shared<Video>();
+	video3->Tag("아마존의눈물", 2000, VideoType::DOCU);
+
+	auto calc = std::make_shared<RentCalculator>();
+	calc->RegisterDiscountRule(VideoType::MOVIE, 3, 0.5);
+	calc->RegisterDiscountRule(VideoType::DOCU, 4, 0.3);
+
+	auto point = std::make_shared<PointRule>();
+	point->Register(VideoType::MOVIE, 1);
+	point->Register(VideoType::SPORTS, 2);
+	point->Register(VideoType::DOCU, 1);
+
+	auto record = std::make_shared<RentalRecord>();
+	record->Add(video1, 10, calc->GetRentalCost(video1, 10), point->GetPoint(video1->GetType()));
+	record->Add(video2, 10, calc->GetRentalCost(video2, 10), point->GetPoint(video2->GetType()));
+	record->Add(video3, 10, calc->GetRentalCost(video3, 10), point->GetPoint(video3->GetType()));
+
+	EXPECT_EQ(record->Display(), 
+		"3-블랙머니:1000:1:10:6000,머니볼:1500:2:10:15000,아마존의눈물:2000:3:10:15800,-36800-4");
+	
 }
 
 TEST_F(RentalSystemTests, RegisterVideo_afterFind_NotNull)
