@@ -30,3 +30,16 @@ int RentalRecord::GetCost()
 
 	return total;
 }
+
+int RentalRecord::GetBonusPoint()
+{
+	if (m_records.empty()) return 0;
+
+	int total = 0;
+	for (const auto& record : m_records)
+	{
+		total += record.Point;
+	}
+
+	return total;
+}

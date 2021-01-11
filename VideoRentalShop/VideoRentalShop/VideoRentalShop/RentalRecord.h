@@ -21,4 +21,5 @@ public:
 	void Add(const std::shared_ptr<Video>& video, int days, int cost, int bonusPoint);
 	int GetCount();
 	int GetCost();
+	int GetBonusPoint();
 };
