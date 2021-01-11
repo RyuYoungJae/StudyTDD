@@ -15,6 +15,6 @@ public:
 		auto video = std::make_shared<Video>();
 		video->Tag("블랙머니", 1000, VideoType::MOVIE);
 
-		m_system->Register(video);
+		m_system->RegisterVideo(video);
 	}
 };

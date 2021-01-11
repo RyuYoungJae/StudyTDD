@@ -13,7 +13,10 @@ public:
 	Video();
 
 	void Tag(std::string&& title, int cost, VideoType type);
-	
+
 	std::string GetTitle();
+	VideoType GetType();
+	int GetCost();
+
 	std::string ToString();
 };

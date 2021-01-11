@@ -152,13 +152,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DiscountRule.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PointRule.h" />
     <ClInclude Include="RentalSystem.h" />
+    <ClInclude Include="RentCalculator.h" />
     <ClInclude Include="Video.h" />
     <ClInclude Include="VideoType.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DiscountRule.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -167,6 +170,7 @@
     </ClCompile>
     <ClCompile Include="PointRule.cpp" />
     <ClCompile Include="RentalSystem.cpp" />
+    <ClCompile Include="RentCalculator.cpp" />
     <ClCompile Include="Video.cpp" />
     <ClCompile Include="VideoRentalShop.cpp" />
   </ItemGroup>

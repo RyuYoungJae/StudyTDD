@@ -16,6 +16,16 @@ std::string Video::GetTitle()
 	return m_title;
 }
 
+VideoType Video::GetType()
+{
+	return m_type;
+}
+
+int Video::GetCost()
+{
+	return m_cost;
+}
+
 std::string Video::ToString()
 {
 	return m_title + ":" + std::to_string(m_cost) + ":" + std::to_string(static_cast<int>(m_type));

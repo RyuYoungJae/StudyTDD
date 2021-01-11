@@ -12,6 +12,6 @@ private:
 public:
 	RentalSystem() = default;
 
-	void Register(const std::shared_ptr<Video>& video);
-	std::shared_ptr<Video> Find(const std::string& title);
+	void RegisterVideo(const std::shared_ptr<Video>& video);
+	std::shared_ptr<Video> FindVideo(const std::string& title);
 };
