@@ -62,7 +62,7 @@ TEST(RentalRecordTests, Add_RentalVideo_1Equal)
 	EXPECT_EQ(record->GetCount(), 1);
 }
 
-TEST(RentalRecordTests, GetRentalCost_TotalCost_4500Equal)
+TEST(RentalRecordTests, GetRentalCost_TotalCost_36800Equal)
 {
 	auto video1 = std::make_shared<Video>();
 	video1->Tag("블랙머니", 1000, VideoType::MOVIE);
