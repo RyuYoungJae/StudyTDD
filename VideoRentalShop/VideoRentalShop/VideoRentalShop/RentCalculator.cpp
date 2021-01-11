@@ -17,10 +17,9 @@ int RentCalculator::GetRentalCost(const std::shared_ptr<Video>&  video, int days
 	auto cost = video->GetCost();
 
 	auto discountRule = m_discountRule->GetDiscountRate(type);
-	if (discountRule.second == 0) return discountRule.second;
-
-	if (days < discountRule.first) return cost * days;
+	if (discountRule.second == 0
+		|| days < discountRule.first) return cost * days;
 
 	int discountDays = days - discountRule.first + 1;
-	return static_cast<int>((days - discountDays) * cost + (discountDays * (cost * discountRule.second)));
+	return static_cast<int>((days - discountDays) * cost + (discountDays * (cost - (cost * discountRule.second))));
 }

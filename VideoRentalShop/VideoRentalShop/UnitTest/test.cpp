@@ -62,6 +62,29 @@ TEST(RentalRecordTests, Add_RentalVideo_1Equal)
 	EXPECT_EQ(record->GetCount(), 1);
 }
 
+TEST(RentalRecordTests, GetRentalCost_TotalCost_4500Equal)
+{
+	auto video1 = std::make_shared<Video>();
+	video1->Tag("블랙머니", 1000, VideoType::MOVIE);
+
+	auto video2 = std::make_shared<Video>();
+	video2->Tag("머니볼", 1500, VideoType::SPORTS);
+
+	auto video3 = std::make_shared<Video>();
+	video3->Tag("아마존의눈물", 2000, VideoType::DOCU);
+
+	auto calc = std::make_shared<RentCalculator>();
+	calc->RegisterDiscountRule(VideoType::MOVIE, 3, 0.5);
+	calc->RegisterDiscountRule(VideoType::DOCU, 4, 0.3);
+
+	auto record = std::make_shared<RentalRecord>();
+	record->Add(video1, 10, calc->GetRentalCost(video1, 10), 1); //6000
+	record->Add(video2, 10, calc->GetRentalCost(video2, 10), 1); //15000
+	record->Add(video3, 10, calc->GetRentalCost(video3, 10), 1); //15800
+
+	EXPECT_EQ(record->GetCost(), 36800);
+}
+
 TEST_F(RentalSystemTests, RegisterVideo_afterFind_NotNull)
 {
 	RegisterVideos();
