@@ -157,6 +157,7 @@
     <ClInclude Include="PointRule.h" />
     <ClInclude Include="RentalSystem.h" />
     <ClInclude Include="RentCalculator.h" />
+    <ClInclude Include="RentalRecord.h" />
     <ClInclude Include="Video.h" />
     <ClInclude Include="VideoType.h" />
   </ItemGroup>
@@ -171,6 +172,7 @@
     <ClCompile Include="PointRule.cpp" />
     <ClCompile Include="RentalSystem.cpp" />
     <ClCompile Include="RentCalculator.cpp" />
+    <ClCompile Include="RentalRecord.cpp" />
     <ClCompile Include="Video.cpp" />
     <ClCompile Include="VideoRentalShop.cpp" />
   </ItemGroup>
