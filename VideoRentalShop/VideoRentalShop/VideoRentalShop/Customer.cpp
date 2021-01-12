@@ -3,7 +3,16 @@
 #include "RentalRecord.h"
 #include "Customer.h"
 
-Customer::Customer(int bonusPoint) : m_retal { std::make_unique<RentalRecord>() }, m_totalBonus { bonusPoint }
+Customer::Customer(const std::string& name) 
+	: m_name{ name }
+	, m_retal{ std::make_unique<RentalRecord>() }
+{
+}
+
+Customer::Customer(const std::string& name, int bonusPoint) 
+	: m_name{ name }
+	, m_retal{ std::make_unique<RentalRecord>() }
+	, m_totalBonus { bonusPoint }
 {
 }
 

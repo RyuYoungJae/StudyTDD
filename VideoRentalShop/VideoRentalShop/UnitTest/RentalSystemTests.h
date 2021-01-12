@@ -12,9 +12,6 @@ public:
 
 	void RegisterVideos()
 	{
-		auto video = std::make_shared<Video>();
-		video->Tag("블랙머니", 1000, VideoType::MOVIE);
-
-		m_system->RegisterVideo(video);
+		m_system->RegisterVideo("블랙머니", 1000, VideoType::MOVIE);
 	}
 };

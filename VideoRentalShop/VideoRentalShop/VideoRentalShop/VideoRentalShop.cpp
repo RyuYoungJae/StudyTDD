@@ -4,10 +4,26 @@
 #include "pch.h"
 #include <iostream>
 #include "Video.h"
+#include "RentalSystem.h"
+#include "VideoType.h"
 
 int main()
 {
-    std::cout << "Hello World!\n"; 
+	auto rentalShop = std::make_unique<RentalSystem>();
+	rentalShop->RegisterVideo("블랙머니", 1000, VideoType::MOVIE);
+	rentalShop->RegisterVideo("머니볼", 1500, VideoType::SPORTS);
+	rentalShop->RegisterVideo("아마존의눈물", 2000, VideoType::DOCU);
+
+	rentalShop->RegisterDiscountRule(VideoType::MOVIE, 3, 0.5);
+	rentalShop->RegisterDiscountRule(VideoType::DOCU, 4, 0.3);
+
+	rentalShop->RegisterBonusPointRule(VideoType::MOVIE, 1);
+	rentalShop->RegisterBonusPointRule(VideoType::SPORTS, 2);
+	rentalShop->RegisterBonusPointRule(VideoType::DOCU, 1);
+	
+	rentalShop->RegisterCustomer("유영재", "01077771234");
+	
+	rentalShop->Rental("01077771234", "블랙머니", 3);
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴

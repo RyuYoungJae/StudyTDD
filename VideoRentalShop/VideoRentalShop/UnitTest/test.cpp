@@ -164,7 +164,7 @@ TEST(Customer, Rent_AddTotalPoint_Equal)
 	point->Register(VideoType::SPORTS, 2);
 	point->Register(VideoType::DOCU, 1);
 
-	auto customer = std::make_shared<Customer>(100);
+	auto customer = std::make_shared<Customer>("유영재", 100);
 	customer->Rent(video1, 10, calc->GetRentalCost(video1, 10), point->GetPoint(video1->GetType()));
 	customer->Rent(video2, 10, calc->GetRentalCost(video2, 10), point->GetPoint(video2->GetType()));
 	customer->Rent(video3, 10, calc->GetRentalCost(video3, 10), point->GetPoint(video3->GetType()));
@@ -180,12 +180,11 @@ TEST_F(RentalSystemTests, RegisterVideo_afterFind_NotNull)
 	EXPECT_TRUE(result != nullptr);
 }
 
-//TEST_F(RentalSystemTests, RegisterAccount_afterFind_NotNull)
-//{
-//	m_system->RegisterAccount("유영재", "01012345678");
-//
-//	auto result = m_system->FindAccount("01012345678");
-//	EXPECT_TRUE(result != nullptr);
-//}
+TEST_F(RentalSystemTests, RegisterAccount_afterFind_NotNull)
+{
+	m_system->RegisterCustomer("유영재", "01012345678");
 
+	auto result = m_system->FindCustomer("01012345678");
+	EXPECT_TRUE(result != nullptr);
+}
 

@@ -11,6 +11,7 @@ private:
 
 public:
 	RentCalculator();
+	virtual ~RentCalculator() = default;
 
 	void RegisterDiscountRule(VideoType type, int moreTanDays, double rate);
 	int GetRentalCost(const std::shared_ptr<Video>& video, int days);
